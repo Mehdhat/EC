@@ -20,20 +20,15 @@ Open your terminal (Command Prompt or Git Bash) and run:
 git clone https://github.com/Mehdhat/EC.git
 cd EC
 
-```bash
 pip install virtualenv
 python -m venv venv
 
-```bash
 python -m venv venv
 
-```bash
 pip install flask
 
-```bash
 flask run
 
-```bash
 http://127.0.0.1:5000
 
 cd EC
