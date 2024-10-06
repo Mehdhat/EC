@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dresses</title>
+     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="bg-white">
+    <nav class="bg-green-800 text-white p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="/" class="text-xl font-bold">
+                <i class="fa fa-fw fa-shopping-bag"></i> FashionDash.
+            </a>
+            <ul class="hidden md:flex space-x-6">
+                <li><a href="home.html#about" class="hover:text-green-200"><i class="fa fa-fw fa-info-circle"></i> About</a></li>
+                <li><a href="home.html#contact" class="hover:text-green-200"><i class="fa fa-fw fa-envelope"></i> Contact</a></li>
+                <li><a href="/categories" class="hover:text-green-200"><i class="fa fa-fw fa-bars"></i> Categories</a></li>
+                <li><a href="/login" class="hover:text-green-200"><i class="fa fa-fw fa-user"></i> Login</a></li>
+                <li><a href="/search" class="hover:text-green-200"><i class="fa fa-fw fa-search"></i> Search</a></li>
+                <li><a href="/cart" class="hover:text-green-200"><i class="fa fa-fw fa-shopping-cart"></i> Cart</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <br><br>
+   
+    <section class="Dresses">
+        <h2 class="text-3xl font-bold text-center mb-6 text-green-800">Explore Dresses!</h2>
+        <div id="products" class="bg-white">
+            <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+                <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+
+                    <!-- Example for one card -->
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/dresses/EC19.jpg" alt="Product Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Simple Kurti with Dupatta</h3>
+                            <p class="text-sm font-medium text-black">3000</p>
+                            <button onclick='addToCart("Simple Kurti with Dupatta", 3000)' 
+                                    class='mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600'>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/dresses/EC2.jpg" alt="Product Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Anarkali Frock</h3>
+                            <p class="text-sm font-medium text-black">3300</p>
+                            <button onclick='addToCart("Anarkali Frock", 3300)' 
+                                    class='mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600'>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/dresses/EC22.jpg" alt="Product Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Light Embroided</h3>
+                            <p class="text-sm font-medium text-black">4400</p>
+                            <button onclick='addToCart("Light Embroided", 4400)' 
+                                    class='mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600'>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/dresses/EC4.jpg" alt="Product Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Casual Kurti</h3>
+                            <p class="text-sm font-medium text-black">2800</p>
+                            <button onclick='addToCart("Casual Kurti", 2800)' 
+                                    class='mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600'>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/dresses/EC5.jpg" alt="Product Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Cotton Kurti</h3>
+                            <p class="text-sm font-medium text-black">3500</p>
+                            <button onclick='addToCart("Cotton Kurti", 3500)' 
+                                    class='mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600'>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/dresses/EC23.jpg" alt="Product Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Raw Silk Peplum with Dhaka Pajama</h3>
+                            <p class="text-sm font-medium text-black">4400</p>
+                            <button onclick='addToCart("Raw Silk Peplum with Dhaka Pajama", 4400)' 
+                                    class='mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600'>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/dresses/EC7.jpg" alt="Product Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Printed Kurti</h3>
+                            <p class="text-sm font-medium text-black">2700</p>
+                            <button onclick='addToCart("Printed Kurti", 2700)' 
+                                    class='mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600'>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/dresses/EC25.jpg" alt="Product Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Classic Straight Cut Shalwar Kameez</h3>
+                            <p class="text-sm font-medium text-black">4900</p>
+                            <button onclick='addToCart("Classic Straight Cut Shalwar Kameez", 4900)' 
+                                    class='mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600'>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/dresses/EC15.jpg" alt="Product Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Casual Khaddar Printed Suit</h3>
+                            <p class="text-sm font-medium text-black">4700</p>
+                            <button onclick='addToCart("Casual Khaddar Printed Suit", 4700)' 
+                                    class='mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600'>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/dresses/EC10.jpg" alt="Product Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Chicken Suit with Embroidered </h3>
+                            <p class="text-sm font-medium text-black">5000</p>
+                            <button onclick='addToCart("Chicken Suit with Embroidered ", 5000)' 
+                                    class='mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600'>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/dresses/EC11.jpg" alt="Product Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Light Simple Kurti</h3>
+                            <p class="text-sm font-medium text-black">2500</p>
+                            <button onclick='addToCart("Light Simple Kurti", 2500)' 
+                                    class='mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600'>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/dresses/EC12.jpg" alt="Product Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Formal Net Kurti with trouser/h3>
+                            <p class="text-sm font-medium text-black">5000</p>
+                            <button onclick='addToCart("Formal Net Kurti with trouser", 5000)' 
+                                    class='mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600'>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/dresses/EC13.jpg" alt="Product Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Organza Dupatta Three-Piece Suit</h3>
+                            <p class="text-sm font-medium text-black">3400</p>
+                            <button onclick='addToCart("Organza Dupatta Three-Piece Suit", 3400)' 
+                                    class='mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600'>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/dresses/EC14.jpg" alt="Product Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Black Printed Kurti with Chiffon Dupatta</h3>
+                            <p class="text-sm font-medium text-black">4500</p>
+                            <button onclick='addToCart("Black Printed Kurti with Chiffon Dupatta", 4500)' 
+                                    class='mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600'>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/dresses/EC1.jpg" alt="Product Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Traditional Kurta Pajama Set</h3>
+                            <p class="text-sm font-medium text-black">6500</p>
+                            <button onclick='addToCart("Traditional Kurta Pajama Set", 6500)' 
+                                    class='mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600'>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/dresses/EC16.jpg" alt="Product Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Captivating Cascade</h3>
+                            <p class="text-sm font-medium text-black">4400</p>
+                            <button onclick='addToCart("Captivating Cascade", 4400)' 
+                                    class='mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600'>Add to Cart</button>
+                        </div>
+                    </div>
+                    
+
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+    <footer class="bg-green-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center flex-wrap">
+                <!-- Logo or Company name -->
+                <div class="text-xl font-bold">
+                    <a href="#" class="text-white hover:text-white">FashionDash.</a>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="flex space-x-6 mt-4 sm:mt-0">
+                    <a href="home.html#about" class="text-white hover:text-white">About</a>
+                    <a href="home.html#contact" class="text-white hover:text-white">Contact</a>
+                </div>
+
+                <!-- Social Media Links -->
+                <div class="flex space-x-6 mt-4 sm:mt-0">
+                    <a href="#" class="text-white hover:text-white">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M22.675 0h-21.35c-.73 0-1.325.596-1.325 1.325v21.351c0 .729.595 1.324 1.325 1.324h21.351c.73 0 1.324-.595 1.324-1.325v-21.351c0-.729-.594-1.325-1.324-1.325zm-13.186 19.733h-3.77v-9.486h3.77v9.486zm-1.885-10.804c-1.211 0-2.194-.986-2.194-2.195 0-1.211.983-2.196 2.194-2.196 1.21 0 2.194.985 2.194 2.196s-.984 2.195-2.194 2.195zm13.186 10.804h-3.77v-5.127c0-1.222-.024-2.797-1.705-2.797-1.707 0-1.968 1.334-1.968 2.71v5.214h-3.77v-9.486h3.617v1.296h.052c.504-.954 1.734-1.962 3.57-1.962 3.822 0 4.526 2.515 4.526 5.785v5.367z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-white hover:text-white">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M24 4.557c-.883.392-1.833.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.723-.951.564-2.005.974-3.127 1.194-.897-.955-2.178-1.555-3.594-1.555-2.72 0-4.924 2.203-4.924 4.924 0 .386.044.762.127 1.124-4.09-.205-7.719-2.164-10.148-5.144-.424.727-.667 1.572-.667 2.475 0 1.707.87 3.216 2.191 4.099-.807-.026-1.566-.247-2.228-.617v.062c0 2.385 1.694 4.374 3.946 4.827-.413.111-.848.171-1.296.171-.317 0-.626-.03-.928-.086.627 1.955 2.444 3.379 4.6 3.42-1.68 1.318-3.8 2.104-6.102 2.104-.396 0-.788-.023-1.175-.069 2.179 1.396 4.768 2.212 7.557 2.212 9.054 0 14.004-7.504 14.004-14.004 0-.213-.005-.426-.014-.637.961-.695 1.794-1.562 2.453-2.549z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-white hover:text-white">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.992 4.388 10.954 10.125 11.854v-8.385h-3.047v-3.47h3.047v-2.64c0-3.008 1.79-4.665 4.533-4.665 1.313 0 2.686.235 2.686.235v2.957h-1.512c-1.491 0-1.952.926-1.952 1.877v2.236h3.328l-.532 3.47h-2.796v8.385c5.737-.9 10.125-5.861 10.125-11.854z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-8 text-center text-white">
+                <p>&copy; 2024 FashionDash.. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+<script src="/static/new.js"></script>
+
+</body>
+</html>

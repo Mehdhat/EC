@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+<nav class="bg-green-800 text-white p-4 shadow-lg">
+    <div class="container mx-auto flex justify-between items-center">
+        <a href="/" class="text-xl font-bold">
+            <i class="fa fa-fw fa-shopping-bag"></i> FashionDash.
+        </a>
+        
+        <ul class="hidden md:flex space-x-6">
+            <li><a href="/home#about" class="hover:text-green-200"><i class="fa fa-fw fa-info-circle"></i> About</a></li>
+            <li><a href="/home#contact" class="hover:text-green-200"><i class="fa fa-fw fa-envelope"></i> Contact</a></li>
+            <li><a href="/categories" class="hover:text-green-200"><i class="fa fa-fw fa-bars"></i>Categories</a></li>
+            <li><a href="/login" class="hover:text-green-200"><i class="fa fa-fw fa-user"></i> Login</a></li>
+            <li><a href="/search" class="hover:text-green-200"><i class="fa fa-fw fa-search"></i> Search</a></li>
+            <li><a href="/cart" class="hover:text-green-200"><i class="fa fa-fw fa-shopping-cart"></i> Cart</a></li>
+        </ul>
+
+        <button class="md:hidden text-xl hover:text-green-200" id="menu-btn">
+            <i class="fa fa-bars"></i>
+        </button>
+    </div>
+</nav>
+
+<section>
+    <h1 class="text-3xl text-center font-bold my-8">Your Cart</h1>
+    <div id="cart-items" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <!-- Cart items will be loaded here via JS -->
+    </div>
+
+    <div class="text-center mt-4">
+        <button id="clear-cart" onclick="clearCart()" 
+                class="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-500">Clear Cart</button>
+        <button id="proceed-checkout" onclick="proceedToCheckout()" 
+                class="px-4 py-2 bg-green-900 text-white rounded hover:bg-green-800">Proceed to Checkout</button>
+    </div>
+</section>
+
+<br><br>
+
+<footer class="bg-green-800 text-white py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center flex-wrap">
+            <div class="text-xl font-bold">
+                <a href="#" class="text-white hover:text-white">FashionDash.</a>
+            </div>
+
+            <!-- Navigation Links -->
+            <div class="flex space-x-6 mt-4 sm:mt-0">
+                <a href="/home#about" class="text-white hover:text-white">About</a>
+                <a href="/home#contact" class="text-white hover:text-white">Contact</a>
+            </div>
+
+            <!-- Social Media Links -->
+            <!-- (Social media SVG links go here) -->
+        </div>
+
+        <div class="mt-8 text-center text-white">
+            <p>&copy; 2024 FashionDash. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
+
+<script>
+// Load cart from localStorage or initialize an empty array
+let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+// Load Cart Items on Cart Page
+function loadCartItems() {
+    const cartItemsDiv = document.getElementById('cart-items');
+    cartItemsDiv.innerHTML = ''; // Clear previous content
+    let totalPrice = 0;
+
+    if (cart.length === 0) {
+        cartItemsDiv.innerHTML = `<p>Your cart is empty. Please add some products.</p>`;
+        document.getElementById('proceed-checkout').style.display = 'none'; // Hide proceed button if cart is empty
+        return;
+    }
+
+    cart.forEach(item => {
+        const productDiv = document.createElement('div');
+        productDiv.classList.add('flex', 'justify-between', 'items-center', 'py-4', 'border-b');
+
+        productDiv.innerHTML = `
+            <div>${item.name} - ${item.price} x ${item.quantity}</div>
+            <button onclick='removeFromCart("${item.name}")' 
+                    class='px-2 py-1 bg-red-600 text-white rounded'>Remove</button>`;
+        cartItemsDiv.appendChild(productDiv);
+
+        // Calculate total price
+        totalPrice += item.price * item.quantity;
+    });
+
+    // Display total price
+    const totalDiv = document.createElement('div');
+    totalDiv.classList.add('text-right', 'mt-4');
+    totalDiv.innerHTML = `<strong>Total: ${totalPrice.toFixed(2)}</strong>`;
+    cartItemsDiv.appendChild(totalDiv);
+}
+
+// Remove from Cart Function
+function removeFromCart(productName) {
+    const productIndex = cart.findIndex(item => item.name === productName);
+
+    if (productIndex !== -1) {
+        const product = cart[productIndex];
+        product.quantity -= 1;
+
+        if (product.quantity === 0) {
+            cart.splice(productIndex, 1);
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart)); // Update localStorage
+        loadCartItems(); // Reload cart items to reflect changes
+    }
+}
+
+// Clear Cart Function
+function clearCart() {
+    localStorage.removeItem('cart'); // Clear the local storage
+    cart = []; // Reset the cart array
+    loadCartItems(); // Reload the cart display
+}
+
+// Proceed to Checkout Function
+function proceedToCheckout() {
+    alert("Proceeding to checkout...");
+    window.location.href = "/checkout"; // Redirect to checkout page
+}
+
+// Load cart items when the page loads
+loadCartItems();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <nav class="bg-green-800 text-white p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo and Brand Name -->
+            <a href="/" class="text-xl font-bold">
+                <i class="fa fa-fw fa-shopping-bag"></i> FashionDash.
+            </a>
+
+            <!-- Menu Items (Hidden on Mobile) -->
+            <ul class="hidden md:flex space-x-6">
+                <li><a href="#about" class="hover:text-green-200"><i class="fa fa-fw fa-info-circle"></i> About</a></li>
+                <li><a href="#contact" class="hover:text-green-200"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+                </li>
+                <li class="relative">
+                    <button id="categories-btn" class="hover:text-green-200 flex items-center">
+                        Categories <i class="ml-1 fa fa-fw fa-caret-down"></i>
+                    </button>
+                    <!-- Dropdown Menu -->
+                    <ul id="categories-dropdown"
+                        class="absolute hidden bg-green-800 text-white p-2 rounded shadow-lg space-y-2 mt-2 w-40">
+                        <li><a href="/bag" class="block hover:bg-green-700 p-2 rounded">Bag</a></li>
+                        <li><a href="/fragnances" class="block hover:bg-green-700 p-2 rounded">Fragrances</a></li>
+                        <li><a href="/dress" class="block hover:bg-green-700 p-2 rounded">Dresses</a></li>
+                        <li><a href="/watches" class="block hover:bg-green-700 p-2 rounded">Watches</a></li>
+                        <li><a href="/shoes" class="block hover:bg-green-700 p-2 rounded">Shoes</a></li>
+                        <li><a href="/jewelry" class="block hover:bg-green-700 p-2 rounded">Jewelry</a></li>
+                    </ul>
+                </li>
+                <li><a href="/" class="hover:text-green-200"><i class="fa fa-fw fa-user"></i> Logout</a></li>
+                <li><a href="/search" class="hover:text-green-200"><i class="fa fa-fw fa-search"></i> Search</a>
+                </li>
+                <li><a href="/cart" class="hover:text-green-200"><i class="fa fa-fw fa-shopping-cart"></i>
+                        Cart</a></li>
+            </ul>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-xl hover:text-green-200" id="menu-btn">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4 bg-green-800 text-white p-4 space-y-4">
+            <a href="#about" class="block hover:text-green-200"><i class="fa fa-fw fa-info-circle"></i> About</a>
+            <a href="#contact" class="block hover:text-green-200"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+            <a href="/login" class="block hover:text-green-200"><i class="fa fa-fw fa-user"></i> Login</a>
+            <a href="/search" class="block hover:text-green-200"><i class="fa fa-fw fa-search"></i> Search</a>
+            <a href="/cart" class="block hover:text-green-200"><i class="fa fa-fw fa-shopping-cart"></i> Cart</a>
+        </div>
+    </nav>
+    <div class="flex items-center justify-between h-3/4 p-5 bg-gradient-to-r from-green-300 to-green-100">
+        <!-- Image Section -->
+        <div class="w-1/2">
+            <img src="/static/img/banner1.png" alt="Shopping Banner" class="w-full h-auto">
+        </div>
+
+        <!-- Text Section -->
+        <div class="w-1/2 p-5">
+            <h1 class="text-4xl font-bold text-green-800">Welcome Back to Your Shopping Haven!</h1>
+            <p class="text-green-600 font-bold mt-2">We’ve missed you! Rediscover a treasure trove of exclusive offers
+                and personalized deals crafted just for you. Your next favorite find is waiting!</p>
+            <div class="mt-6">
+                <a href="/categories"
+                    class="bg-green-800 text-white px-6 py-3 rounded hover:bg-green-300 hover:text-green-800 transition duration-300">Explore
+                    Our Categories</a>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <section class="featured-products">
+        <h2 class="text-3xl font-bold text-center mb-6 text-green-800">Featured Products</h2>
+        <div id="products" class="bg-white">
+            <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+                <h2 class="text-2xl font-bold tracking-tight text-black">Customers also purchased</h2>
+    
+                <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                    <!-- Product 1 -->
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/bags/bag13.jpg" alt="Elegant Carry Collection" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Elegant Carry Collection</h3>
+                            <p class="text-sm font-medium text-black">$3500</p>
+                            <button onclick="addToCart('Elegant Carry Collection', 3500)" class="mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600">Add to Cart</button>
+                        </div>
+                    </div>
+    
+                    <!-- Product 2 -->
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/fragnances/per6.jpg" alt="Whispering Petals" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Whispering Petals</h3>
+                            <p class="text-sm font-medium text-black">$7000</p>
+                            <button onclick="addToCart('Whispering Petals', 7000)" class="mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600">Add to Cart</button>
+                        </div>
+                    </div>
+    
+                    <!-- Product 3 -->
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/bags/bag18.jpg" alt="Fresh Style Bag" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Fresh Style Bag</h3>
+                            <p class="text-sm font-medium text-black">$3000</p>
+                            <button onclick="addToCart('Fresh Style Bag', 3000)" class="mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600">Add to Cart</button>
+                        </div>
+                    </div>
+    
+                    <!-- Product 4 -->
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/shoes/ECS10.jpg" alt="Lace Up Compfy Shoes" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Lace Up Compfy Shoes</h3>
+                            <p class="text-sm font-medium text-black">$5000</p>
+                            <button onclick="addToCart('Lace Up Compfy Shoes', 5000)" class="mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600">Add to Cart</button>
+                        </div>
+                    </div>
+    
+                    <!-- Product 5 -->
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/fragnances/per8.jpg" alt="Twilight Mist" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Twilight Mist</h3>
+                            <p class="text-sm font-medium text-black">$5500</p>
+                            <button onclick="addToCart('Twilight Mist', 5500)" class="mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600">Add to Cart</button>
+                        </div>
+                    </div>
+    
+                    <!-- Product 6 -->
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/bags/bag2.jpg" alt="Simple and Fresh Style Bag" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Simple and Fresh Style Bag</h3>
+                            <p class="text-sm font-medium text-black">$3400</p>
+                            <button onclick="addToCart('Simple and Fresh Style Bag', 3400)" class="mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600">Add to Cart</button>
+                        </div>
+                    </div>
+    
+                    <!-- Product 7 -->
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/dresses/EC25.jpg" alt="Classic Straight Cut Shalwar Kameez" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Classic Straight Cut Shalwar Kameez</h3>
+                            <p class="text-sm font-medium text-black">$4900</p>
+                            <button onclick="addToCart('Classic Straight Cut Shalwar Kameez', 4900)" class="mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600">Add to Cart</button>
+                        </div>
+                    </div>
+    
+                    <!-- Product 8 -->
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/fragnances/per17.jpg" alt="Captivating Cascade" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Captivating Cascade</h3>
+                            <p class="text-sm font-medium text-black">$6000</p>
+                            <button onclick="addToCart('Captivating Cascade', 6000)" class="mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600">Add to Cart</button>
+                        </div>
+                    </div>
+    
+                    <!-- Product 9 -->
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/bags/bag19.jpg" alt="Simple Leisure Wind Case Bag" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Simple Leisure Wind Case Bag</h3>
+                            <p class="text-sm font-medium text-black">$3500</p>
+                            <button onclick="addToCart('Simple Leisure Wind Case Bag', 3500)" class="mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600">Add to Cart</button>
+                        </div>
+                    </div>
+    
+                    <!-- Product 10 -->
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/dresses/EC15.jpg" alt="Casual Khaddar Printed Suit" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Casual Khaddar Printed Suit</h3>
+                            <p class="text-sm font-medium text-black">$4700</p>
+                            <button onclick="addToCart('Casual Khaddar Printed Suit', 4700)" class="mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600">Add to Cart</button>
+                        </div>
+                    </div>
+
+                      <!-- Product 11 -->
+                    <div class="group relative product">
+                        <div
+                            class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/bags/bag17.jpg" alt="Product Image"
+                                class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-sm text-gray-800 font-bold">
+                                    <a href="#">
+                                        <span aria-hidden="true" class="absolute inset-0"></span>
+                                        Carry Couture
+                                    </a>
+                                </h3>
+                            </div>
+                            <p class="text-sm font-medium text-black">3800</p>
+                            <button onclick="addToCart('Carry Couture', 3800)" class="mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600">Add to Cart</button>
+                        </div>
+                    </div>
+
+                      <!-- Product 12 -->
+                    <div class="group relative product">
+                        <div
+                            class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/fragnances/per9.jpg" alt="Product Image"
+                                class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-sm text-gray-800 font-bold">
+                                    <a href="#">
+                                        <span aria-hidden="true" class="absolute inset-0"></span>
+                                        Captivating Cascade
+                                    </a>
+                                </h3>
+                            </div>
+                            <p class="text-sm font-medium text-black">6000</p>
+                            <button onclick="addToCart('Captivating Cascade', 6000)" class="mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600">Add to Cart</button>
+                        </div>
+                    </div>
+
+                      <!-- Product 13 -->
+                    <div class="group relative product">
+                        <div
+                            class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/dresses/EC23.jpg" alt="Product Image"
+                                class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-sm text-gray-800 font-bold">
+                                    <a href="#">
+                                        <span aria-hidden="true" class="absolute inset-0"></span>
+                                        Raw Silk Replum with Dhaka Pajama
+                                    </a>
+                                </h3>
+                            </div>
+                            <p class="text-sm font-medium text-black">4400</p>
+                        <button onclick="addToCart('Raw Silk Replum with Dhaka Pajama', 4400)" class="mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600">Add to Cart</button>
+                        </div>
+                    </div>
+
+                      <!-- Product 14 -->
+                    <div class="group relative product">
+                        <div
+                            class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/bags/bag7.jpg" alt="Product Image"
+                                class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-sm text-gray-800 font-bold">
+                                    <a href="#">
+                                        <span aria-hidden="true" class="absolute inset-0"></span>
+                                        Stylish HandBag Emporium
+                                    </a>
+                                </h3>
+                            </div>
+                            <p class="text-sm font-medium text-black">7000</p>
+                         <button onclick="addToCart('Stylish HandBag Emporium', 7000)" class="mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600">Add to Cart</button>
+                        </div>
+                    </div>
+
+                      <!-- Product 15 -->
+                    <div class="group relative product">
+                        <div
+                            class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/dresses/EC2.jpg" alt="Product Image"
+                                class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <div>
+                                <h3 class="text-sm text-gray-800 font-bold">
+                                    <a href="#">
+                                        <span aria-hidden="true" class="absolute inset-0"></span>
+                                        Anarkali Frock
+                                    </a>
+                                </h3>
+                            </div>
+                            <p class="text-sm font-medium text-black">3300</p>
+                          <button onclick="addToCart('Anarkali Frock', 3300)" class="mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600">Add to Cart</button>
+                        </div>
+                    </div>
+    
+                    <!-- Product 16 -->
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/shoes/ECS21.jpg" alt="Arch Fit Shoes" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Arch Fit Shoes</h3>
+                            <p class="text-sm font-medium text-black">$7000</p>
+                            <button onclick="addToCart('Arch Fit Shoes', 7000)" class="mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600">Add to Cart</button>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <div id="contact" class="isolate bg-white px-6 py-24 sm:py-32 lg:px-8">
+        <div class="mx-auto max-w-2xl text-center">
+            <h2 class="text-3xl font-bold tracking-tight text-green-800 sm:text-4xl">Get in Touch with Our Sales Team
+            </h2>
+            <p class="mt-2 text-lg text-gray-800">Have questions about our products? We're here to help you!</p>
+        </div>
+
+        <form action="#" method="POST" class="mx-auto mt-16 max-w-xl">
+            <div class="grid grid-cols-1 gap-x-8 gap-y-6 sm:grid-cols-2">
+                <div>
+                    <label for="first-name" class="block text-sm font-semibold text-black">First Name</label>
+                    <input type="text" name="first-name" id="first-name" autocomplete="given-name"
+                        class="mt-2.5 w-full rounded-md border border-gray-300 px-3.5 py-2 text-gray-900 shadow-sm focus:outline-none focus:ring focus:ring-green-500">
+                </div>
+                <div>
+                    <label for="last-name" class="block text-sm font-semibold text-black">Last Name</label>
+                    <input type="text" name="last-name" id="last-name" autocomplete="family-name"
+                        class="mt-2.5 w-full rounded-md border border-gray-300 px-3.5 py-2 text-gray-900 shadow-sm focus:outline-none focus:ring focus:ring-green-500">
+                </div>
+                <div class="sm:col-span-2">
+                    <label for="company" class="block text-sm font-semibold text-black">Company</label>
+                    <input type="text" name="company" id="company" autocomplete="organization"
+                        class="mt-2.5 w-full rounded-md border border-gray-300 px-3.5 py-2 text-gray-900 shadow-sm focus:outline-none focus:ring focus:ring-green-500">
+                </div>
+                <div class="sm:col-span-2">
+                    <label for="email" class="block text-sm font-semibold text-black">Email</label>
+                    <input type="email" name="email" id="email" autocomplete="email"
+                        class="mt-2.5 w-full rounded-md border border-gray-300 px-3.5 py-2 text-gray-900 shadow-sm focus:outline-none focus:ring focus:ring-green-500">
+                </div>
+                <div class="sm:col-span-2">
+                    <label for="phone-number" class="block text-sm font-semibold text-black">Phone Number</label>
+                    <div class="relative mt-2.5">
+                        <input type="tel" name="phone-number" id="phone-number" autocomplete="tel"
+                            class="block w-full rounded-md border border-gray-300 px-3.5 py-2 text-gray-900 shadow-sm focus:outline-none focus:ring focus:ring-green-500">
+                    </div>
+                </div>
+            </div>
+            <div class="mt-10">
+                <button type="submit"
+                    class="bg-green-800 w-full rounded-md px-3.5 py-2.5 text-sm font-semibold text-white hover:bg-green-700 transition duration-300">Submit</button>
+            </div>
+        </form>
+    </div>
+    <section id="about" class="bg-white text-green-800 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <!-- Company Information -->
+                <div>
+                    <h2 class="text-3xl font-bold mb-4">About Our E-Commerce Store</h2>
+                    <p class="text-black mb-6">
+                        At FashionDash., we are passionate about providing our customers with an exceptional online
+                        shopping experience. Our extensive range of high-quality products is carefully curated to meet
+                        the diverse needs of our valued customers.
+                    </p>
+                    <p class="text-black mb-6">
+                        We believe in the power of innovation and strive to bring you the latest trends and products at
+                        competitive prices. Our team is dedicated to ensuring that every purchase is seamless, from
+                        browsing to checkout.
+                    </p>
+                    <p class="text-black">
+                        Our mission is to empower you with the best products and unparalleled customer service. We are
+                        here to support you every step of the way, ensuring your satisfaction is our top priority.
+                    </p>
+                </div>
+
+                <!-- Company Image or Graphic -->
+                <div>
+                    <img class="w-full rounded-lg" src="/static/img/banner1.png" alt="About our company">
+                </div>
+            </div>
+        </div>
+    </section>
+    <footer class="bg-green-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center flex-wrap">
+                <!-- Logo or Company name -->
+                <div class="text-xl font-bold">
+                    <a href="#" class="text-white hover:text-white">FashionDash.</a>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="flex space-x-6 mt-4 sm:mt-0">
+                    <a href="#about" class="text-white hover:text-white">About</a>
+                    <a href="#contact" class="text-white hover:text-white">Contact</a>
+                </div>
+
+                <!-- Social Media Links -->
+                <div class="flex space-x-6 mt-4 sm:mt-0">
+                    <a href="#" class="text-white hover:text-white">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M22.675 0h-21.35c-.73 0-1.325.596-1.325 1.325v21.351c0 .729.595 1.324 1.325 1.324h21.351c.73 0 1.324-.595 1.324-1.325v-21.351c0-.729-.594-1.325-1.324-1.325zm-13.186 19.733h-3.77v-9.486h3.77v9.486zm-1.885-10.804c-1.211 0-2.194-.986-2.194-2.195 0-1.211.983-2.196 2.194-2.196 1.21 0 2.194.985 2.194 2.196s-.984 2.195-2.194 2.195zm13.186 10.804h-3.77v-5.127c0-1.222-.024-2.797-1.705-2.797-1.707 0-1.968 1.334-1.968 2.71v5.214h-3.77v-9.486h3.617v1.296h.052c.504-.954 1.734-1.962 3.57-1.962 3.822 0 4.526 2.515 4.526 5.785v5.367z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-white hover:text-white">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M24 4.557c-.883.392-1.833.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.723-.951.564-2.005.974-3.127 1.194-.897-.955-2.178-1.555-3.594-1.555-2.72 0-4.924 2.203-4.924 4.924 0 .386.044.762.127 1.124-4.09-.205-7.719-2.164-10.148-5.144-.424.727-.667 1.572-.667 2.475 0 1.707.87 3.216 2.191 4.099-.807-.026-1.566-.247-2.228-.617v.062c0 2.385 1.694 4.374 3.946 4.827-.413.111-.848.171-1.296.171-.317 0-.626-.03-.928-.086.627 1.955 2.444 3.379 4.6 3.42-1.68 1.318-3.8 2.104-6.102 2.104-.396 0-.788-.023-1.175-.069 2.179 1.396 4.768 2.212 7.557 2.212 9.054 0 14.004-7.504 14.004-14.004 0-.213-.005-.426-.014-.637.961-.695 1.794-1.562 2.453-2.549z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-white hover:text-white">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.992 4.388 10.954 10.125 11.854v-8.385h-3.047v-3.47h3.047v-2.64c0-3.008 1.79-4.665 4.533-4.665 1.313 0 2.686.235 2.686.235v2.957h-1.512c-1.491 0-1.952.926-1.952 1.877v2.236h3.328l-.532 3.47h-2.796v8.385c5.737-.9 10.125-5.861 10.125-11.854z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-8 text-center text-white">
+                <p>&copy; 2024 FashionDash.. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Include JavaScript file -->
+    <script src="/static/script.js"></script>
+    <script>
+        // Toggle mobile menu visibility
+        document.getElementById('menu-btn').addEventListener('click', function () {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Toggle categories dropdown visibility
+        const categoriesBtn = document.getElementById('categories-btn');
+        const categoriesDropdown = document.getElementById('categories-dropdown');
+
+        categoriesBtn.addEventListener('click', function () {
+            categoriesDropdown.classList.toggle('hidden');
+        });
+
+        // Close dropdown when clicking outside
+        window.addEventListener('click', function (event) {
+            if (!event.target.matches('#categories-btn')) {
+                if (!categoriesDropdown.classList.contains('hidden')) {
+                    categoriesDropdown.classList.add('hidden');
+                }
+            }
+        });
+    </script>
+    <script src="/static/app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log In</title>
+     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <nav class="bg-green-800 text-white p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo and Brand Name -->
+            <a href="/" class="text-xl font-bold">
+                <i class="fa fa-fw fa-shopping-bag"></i> FashionDash.
+            </a>
+
+            <!-- Menu Items (Hidden on Mobile) -->
+            <ul class="hidden md:flex space-x-6">
+                <li><a href="/#about" class="hover:text-green-200"><i class="fa fa-fw fa-info-circle"></i> About</a></li>
+                <li><a href="/#contact" class="hover:text-green-200"><i class="fa fa-fw fa-envelope"></i> Contact</a></li>
+                <li><a href="/signup" class="hover:text-green-200"><i class="fa fa-fw fa-user"></i> Signup</a></li>
+                <li><a href="/search" class="hover:text-green-200"><i class="fa fa-fw fa-search"></i> Search</a></li>
+            </ul>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-xl hover:text-green-200" id="menu-btn">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4 bg-green-800 text-white p-4 space-y-4">
+            <a href="#about" class="block hover:text-green-200"><i class="fa fa-fw fa-info-circle"></i> About</a>
+            <a href="#contact" class="block hover:text-green-200"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+            <a href="/signup" class="block hover:text-green-200"><i class="fa fa-fw fa-user"></i> Signup</a>
+            <a href="/search" class="block hover:text-green-200"><i class="fa fa-fw fa-search"></i> Search</a>
+        </div>
+    </nav>
+
+    <!-- Login Form -->
+    <div class="bg-white flex items-center justify-center min-h-screen">
+        <div class="container mx-auto p-6 bg-white shadow-md rounded-lg w-full max-w-sm">
+            <h1 class="text-2xl font-bold mb-6 text-center text-green-800">Login</h1>
+
+            <form id="login-form">
+                <div class="mb-4">
+                    <label for="username" class="block text-gray-700">Username:</label>
+                    <input type="text" id="username" name="username" required
+                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-green-500 focus:ring focus:ring-green-200">
+                </div>
+
+                <div class="mb-4">
+                    <label for="password" class="block text-gray-700">Password:</label>
+                    <input type="password" id="password" name="password" required
+                        class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-green-500 focus:ring focus:ring-green-200">
+                </div>
+
+                <button type="submit" class="w-full bg-green-800 text-white px-4 py-2 rounded hover:bg-green-700 transition duration-200">Login</button>
+            </form>
+
+            <div id="message" class="mt-4 text-center"></div>
+
+            <div class="links mt-4 text-center text-gray-600">
+                <p>Don't have an account? <a href="/signup" class="text-green-600 hover:underline">Sign Up Here!</a></p>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-green-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center flex-wrap">
+                <!-- Logo or Company name -->
+                <div class="text-xl font-bold">
+                    <a href="#" class="text-white hover:text-white">FashionDash.</a>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="flex space-x-6 mt-4 sm:mt-0">
+                    <a href="/#about" class="text-white hover:text-white">About</a>
+                    <a href="/#contact" class="text-white hover:text-white">Contact</a>
+                </div>
+
+                <!-- Social Media Links -->
+                <div class="flex space-x-6 mt-4 sm:mt-0">
+                    <a href="#" class="text-white hover:text-white">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M22.675 0h-21.35c-.73 0-1.325.596-1.325 1.325v21.351c0 .729.595 1.324 1.325 1.324h21.351c.73 0 1.324-.595 1.324-1.325v-21.351c0-.729-.594-1.325-1.324-1.325zm-13.186 19.733h-3.77v-9.486h3.77v9.486zm-1.885-10.804c-1.211 0-2.194-.986-2.194-2.195 0-1.211.983-2.196 2.194-2.196 1.21 0 2.194.985 2.194 2.196s-.984 2.195-2.194 2.195zm13.186 10.804h-3.77v-5.127c0-1.222-.024-2.797-1.705-2.797-1.707 0-1.968 1.334-1.968 2.71v5.214h-3.77v-9.486h3.617v1.296h.052c.504-.954 1.734-1.962 3.57-1.962 3.822 0 4.526 2.515 4.526 5.785v5.367z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-8 text-center text-white">
+                <p>&copy; 2024 FashionDash.. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('login-form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the form from submitting
+
+            // Get form data
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Retrieve stored user data from localStorage
+            const storedUser = localStorage.getItem('user');
+            if (storedUser) {
+                const user = JSON.parse(storedUser);
+
+                // Check if the credentials match
+                if (username === user.username && password === user.password) {
+                    document.getElementById('message').innerHTML = `<p class='text-green-500'>Login successful!</p>`;
+                    // Redirect to a different page, e.g., dashboard
+                    setTimeout(() => {
+                        window.location.href = '/home'; // Example redirection
+                    }, 1500);
+                } else {
+                    document.getElementById('message').innerHTML = `<p class='text-red-500'>Invalid username or password.</p>`;
+                }
+            } else {
+                document.getElementById('message').innerHTML = `<p class='text-red-500'>No user found. Please sign up first.</p>`;
+            }
+        });
+
+        // Toggle mobile menu visibility
+        document.getElementById('menu-btn').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+
+</body>
+
+</html>

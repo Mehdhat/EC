@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bags</title>
+     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="bg-white">
+    <nav class="bg-green-800 text-white p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="/" class="text-xl font-bold">
+                <i class="fa fa-fw fa-shopping-bag"></i> FashionDash.
+            </a>
+            <ul class="hidden md:flex space-x-6">
+                <li><a href="/home#about" class="hover:text-green-200"><i class="fa fa-fw fa-info-circle"></i> About</a></li>
+                <li><a href="/home#contact" class="hover:text-green-200"><i class="fa fa-fw fa-envelope"></i> Contact</a></li>
+                <li><a href="/categories" class="hover:text-green-200"><i class="fa fa-fw fa-bars"></i> Categories</a></li>
+                <li><a href="/login" class="hover:text-green-200"><i class="fa fa-fw fa-user"></i> Login</a></li>
+                <li><a href="/search" class="hover:text-green-200"><i class="fa fa-fw fa-search"></i> Search</a></li>
+                <li><a href="/cart" class="hover:text-green-200"><i class="fa fa-fw fa-shopping-cart"></i> Cart</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <br><br>
+
+    <section class="Bags">
+        <h2 class="text-3xl font-bold text-center mb-6 text-green-800">Explore Bags!</h2>
+        <div id="products" class="bg-white">
+            <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+                <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+
+                    <!-- Example for one card -->
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/bags/bag2.jpg" alt="Product Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Simple and Fresh Style Bag</h3>
+                            <p class="text-sm font-medium text-black">2500</p>
+                            <button onclick='addToCart("Simple and Fresh Style Bag", 2500)' 
+                                    class='mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600'>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/bags/bag25.jpg" alt="Product Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Simple and Fresh Style Bag</h3>
+                            <p class="text-sm font-medium text-black">3000</p>
+                            <button onclick='addToCart("Simple and Fresh Style Bag", 3000)' 
+                                    class='mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600'>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/bags/bag19.jpg" alt="Product Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold"> Simple Leisure Wind Case Bag</h3>
+                            <p class="text-sm font-medium text-black">3500</p>
+                            <button onclick='addToCart("Simple Leisure Wind Case Bag", 3500)' 
+                                    class='mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600'>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/bags/bag4.jpg" alt="Product Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Beautiful Simple Fashion Bag</h3>
+                            <p class="text-sm font-medium text-black">3000</p>
+                            <button onclick='addToCart("Beautiful Simple Fashion Bag", 3000)' 
+                                    class='mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600'>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/bags/bag20.jpg" alt="Product Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Dreamy Drapes Bag</h3>
+                            <p class="text-sm font-medium text-black">4500</p>
+                            <button onclick='addToCart("Dreamy Drapes Bag", 4500)' 
+                                    class='mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600'>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/bags/bag6.jpg" alt="Product Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold"> Elegant Ego Bag</h3>
+                            <p class="text-sm font-medium text-black">5000</p>
+                            <button onclick='addToCart("Elegant Ego Bag", 5000)' 
+                                    class='mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600'>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/bags/bag7.jpg" alt="Product Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Stylish Handbag Emporium</h3>
+                            <p class="text-sm font-medium text-black">7000</p>
+                            <button onclick='addToCart("Stylish Handbag Emporium", 7000)' 
+                                    class='mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600'>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/bags/bag8.jpg" alt="Product Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Elegant Carry Collection</h3>
+                            <p class="text-sm font-medium text-black">3500</p>
+                            <button onclick='addToCart("Elegant Carry Collection", 3500)' 
+                                    class='mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600'>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/bags/bag2.jpg" alt="Product Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Simple and Fresh Style Bag</h3>
+                            <p class="text-sm font-medium text-black">2500</p>
+                            <button onclick='addToCart("Simple and Fresh Style Bag", 2500)' 
+                                    class='mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600'>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/bags/bag16.jpg" alt="Product Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">The Dapper Handbag</h3>
+                            <p class="text-sm font-medium text-black">4000</p>
+                            <button onclick='addToCart("The Dapper Handbag", 4000)' 
+                                    class='mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600'>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/bags/bag10.jpg" alt="Product Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">LuxeLane Bag</h3>
+                            <p class="text-sm font-medium text-black">6000</p>
+                            <button onclick='addToCart("LuxeLane Bag", 6000)' 
+                                    class='mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600'>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/bags/bag17.jpg" alt="Product Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">LuxeLane Bag</h3>
+                            <p class="text-sm font-medium text-black">3800</p>
+                            <button onclick='addToCart("Simple and Fresh Style Bag", 3800)' 
+                                    class='mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600'>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/bags/bag13.jpg" alt="Product Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Elegant Carry Collection</h3>
+                            <p class="text-sm font-medium text-black">3500</p>
+                            <button onclick='addToCart("Elegant Carry Collection", 3500)' 
+                                    class='mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600'>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/bags/bag23.jpg" alt="Product Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Beatiful Simple Handbag</h3>
+                            <p class="text-sm font-medium text-black">3000</p>
+                            <button onclick='addToCart("Simple and Fresh Style Bag", 3000)' 
+                                    class='mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600'>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/bags/bag15.jpg" alt="Product Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Fresh Summer Bag</h3>
+                            <p class="text-sm font-medium text-black">4500</p>
+                            <button onclick='addToCart("Fresh Summer Bag", 4500)' 
+                                    class='mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600'>Add to Cart</button>
+                        </div>
+                    </div>
+                    <div class="group relative product">
+                        <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                            <img src="/static/img/bags/bag18.jpg" alt="Product Image" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                        </div>
+                        <div class="mt-4 flex flex-col justify-between">
+                            <h3 class="text-sm text-gray-800 font-bold">Simple and Fresh Style Bag</h3>
+                            <p class="text-sm font-medium text-black">3000</p>
+                            <button onclick='addToCart("Fresh Style Bag", 3000)' 
+                                    class='mt-2 px-4 py-2 bg-green-800 text-white rounded hover:bg-green-600'>Add to Cart</button>
+                        </div>
+                    </div>
+                    
+
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+    <footer class="bg-green-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center flex-wrap">
+                <!-- Logo or Company name -->
+                <div class="text-xl font-bold">
+                    <a href="#" class="text-white hover:text-white">FashionDash.</a>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="flex space-x-6 mt-4 sm:mt-0">
+                    <a href="/home#about" class="text-white hover:text-white">About</a>
+                    <a href="/home#contact" class="text-white hover:text-white">Contact</a>
+                </div>
+
+                <!-- Social Media Links -->
+                <div class="flex space-x-6 mt-4 sm:mt-0">
+                    <a href="#" class="text-white hover:text-white">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M22.675 0h-21.35c-.73 0-1.325.596-1.325 1.325v21.351c0 .729.595 1.324 1.325 1.324h21.351c.73 0 1.324-.595 1.324-1.325v-21.351c0-.729-.594-1.325-1.324-1.325zm-13.186 19.733h-3.77v-9.486h3.77v9.486zm-1.885-10.804c-1.211 0-2.194-.986-2.194-2.195 0-1.211.983-2.196 2.194-2.196 1.21 0 2.194.985 2.194 2.196s-.984 2.195-2.194 2.195zm13.186 10.804h-3.77v-5.127c0-1.222-.024-2.797-1.705-2.797-1.707 0-1.968 1.334-1.968 2.71v5.214h-3.77v-9.486h3.617v1.296h.052c.504-.954 1.734-1.962 3.57-1.962 3.822 0 4.526 2.515 4.526 5.785v5.367z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-white hover:text-white">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M24 4.557c-.883.392-1.833.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.723-.951.564-2.005.974-3.127 1.194-.897-.955-2.178-1.555-3.594-1.555-2.72 0-4.924 2.203-4.924 4.924 0 .386.044.762.127 1.124-4.09-.205-7.719-2.164-10.148-5.144-.424.727-.667 1.572-.667 2.475 0 1.707.87 3.216 2.191 4.099-.807-.026-1.566-.247-2.228-.617v.062c0 2.385 1.694 4.374 3.946 4.827-.413.111-.848.171-1.296.171-.317 0-.626-.03-.928-.086.627 1.955 2.444 3.379 4.6 3.42-1.68 1.318-3.8 2.104-6.102 2.104-.396 0-.788-.023-1.175-.069 2.179 1.396 4.768 2.212 7.557 2.212 9.054 0 14.004-7.504 14.004-14.004 0-.213-.005-.426-.014-.637.961-.695 1.794-1.562 2.453-2.549z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-white hover:text-white">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.992 4.388 10.954 10.125 11.854v-8.385h-3.047v-3.47h3.047v-2.64c0-3.008 1.79-4.665 4.533-4.665 1.313 0 2.686.235 2.686.235v2.957h-1.512c-1.491 0-1.952.926-1.952 1.877v2.236h3.328l-.532 3.47h-2.796v8.385c5.737-.9 10.125-5.861 10.125-11.854z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-8 text-center text-white">
+                <p>&copy; 2024 FashionDash.. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+<script src="/static/new.js"></script>
+
+</body>
+</html>

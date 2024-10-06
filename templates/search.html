@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <title>Log In</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body class="bg-white">
+    <nav class="bg-green-800 text-white p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="/" class="text-xl font-bold">
+                <i class="fa fa-fw fa-shopping-bag"></i> FashionDash.
+            </a>
+            <ul class="hidden md:flex space-x-6">
+                <li><a href="/#about" class="hover:text-green-200"><i class="fa fa-fw fa-info-circle"></i>
+                        About</a></li>
+                <li><a href="/#contact" class="hover:text-green-200"><i class="fa fa-fw fa-envelope"></i>
+                        Contact</a></li>
+                <li><a href="/categories" class="hover:text-green-200"><i class="fa fa-fw fa-bars"></i>
+                        Categories</a></li>
+                <li><a href="/login" class="hover:text-green-200"><i class="fa fa-fw fa-user"></i> Login</a></li>
+                <li><a href="/search" class="hover:text-green-200"><i class="fa fa-fw fa-search"></i> Search</a>
+                </li>
+                <li><a href="/cart" class="hover:text-green-200"><i class="fa fa-fw fa-shopping-cart"></i>
+                        Cart</a></li>
+            </ul>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-xl hover:text-green-200" id="menu-btn">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4 bg-green-800 text-white p-4 space-y-4">
+            <a href="#about" class="block hover:text-green-200"><i class="fa fa-fw fa-info-circle"></i> About</a>
+            <a href="#contact" class="block hover:text-green-200"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+            <a href="/login" class="block hover:text-green-200"><i class="fa fa-fw fa-user"></i> Login</a>
+            <a href="/search" class="block hover:text-green-200"><i class="fa fa-fw fa-search"></i> Search</a>
+            <a href="/cart" class="block hover:text-green-200"><i class="fa fa-fw fa-shopping-cart"></i> Cart</a>
+        </div>
+    </nav>
+
+    <!-- Search Section -->
+    <div class="container mx-auto p-6 flex flex-col items-center">
+        <h1 class="text-2xl font-bold text-black mb-4">Search</h1>
+
+        <!-- Search Bar -->
+        <div class="w-full max-w-md mb-6">
+            <input id="search-input" type="text" placeholder="Search for products..."
+                class="w-full px-4 py-2 border rounded-md focus:outline-none focus:ring focus:ring-green-500">
+        </div>
+
+        <!-- Search Button -->
+        <button id="search-btn"
+            class="bg-green-800 text-white px-4 py-2 rounded hover:bg-green-700 transition duration-200">Search</button>
+
+        <!-- Category Filter -->
+        <div class="w-full max-w-md mb-6 mt-4">
+            <select id="category-select" class="w-full px-4 py-2 border rounded-md">
+                <option value="">All Categories</option>
+                <!-- <option value="Bags">Bags</option>
+                <option value="Fragrances">Fragrances</option>
+                <option value="Watches">Watches</option>
+                <option value="Shoes">Shoes</option>
+                <option value="Dress">Dress</option>
+                <option value="Jewelry">Jewelry</option> -->
+            </select>
+        </div>
+
+        <!-- Search Results Section -->
+        <div id="results" class="mt-8 w-full max-w-xl bg-white shadow-md rounded-lg p-4">
+            <h2 class="text-xl font-semibold mb-2">Search Results:</h2>
+            <div id="product-list">
+                <!-- Search results will appear here -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-green-800 text-white py-8">
+        <!-- Footer code here -->
+    </footer>
+
+    <script>
+        // Sample Product Data (You can later replace this with a fetch request to a database or API)
+        const products = [
+            {
+                name: "Simple and Fresh Style Bag",
+                price: 2500,
+                image: "/static/img/bags/bag2.jpg",
+                category: "Bags"
+            },
+            {
+                name: "Fresh Summer Bag",
+                price: 3000,
+                image: "/static/img/bags/bag25.jpg",
+                category: "Bags"
+            },
+            {
+                name: "Simple Leisure Wind Case Bag",
+                price: 3500,
+                image: "/static/img/bags/bag19.jpg",
+                category: "Bags"
+            },
+            {
+                name: "Beautiful Simple Fashion Bag",
+                price: 3000,
+                image: "/static/img/bags/bag4.jpg",
+                category: "Bags"
+            },
+            {
+                name: "Dreamy Drapes Bag",
+                price: 4500,
+                image: "/static/img/bags/bag20.jpg",
+                category: "Bags"
+            },
+            {
+                name: "Elegant Ego Bag",
+                price: 5000,
+                image: "/static/img/bags/bag6.jpg",
+                category: "Bags"
+            },
+            {
+                name: "Stylish Handbag Emporium",
+                price: 7000,
+                image: "/static/img/bags/bag7.jpg",
+                category: "Bags"
+            },
+            {
+                name: "Elegant Carry Collection",
+                price: 3500,
+                image: "/static/img/bags/bag8.jpg",
+                category: "Bags"
+            },
+            {
+                name: "The Dapper Handbag",
+                price: 4000,
+                image: "/static/img/bags/bag16.jpg",
+                category: "Bags"
+            },
+            {
+                name: "LuxeLane Bag",
+                price: 6000,
+                image: "/static/img/bags/bag10.jpg",
+                category: "Bags"
+            },
+            {
+                name: "Carry Couture",
+                price: 3800,
+                image: "/static/img/bags/bag17.jpg",
+                category: "Bags"
+            },
+            {
+                name: "Luxe Bag Haven",
+                price: 6000,
+                image: "/static/img/bags/bag12.jpg",
+                category: "Bags"
+            },
+            {
+                name: "Beatiful Simple Handbag",
+                price: 3000,
+                image: "/static/img/bags/bag23.jpg",
+                category: "Bags"
+            },
+            {
+                name: "Fresh Summer Bag",
+                price: 4500,
+                image: "/static/img/bags/bag15.jpg",
+                category: "Bags"
+            },
+            {
+                name: "Fresh Style Bag",
+                price: 3000,
+                image: "/static/img/bags/bag18.jpg",
+                category: "Bags"
+            },
+            {
+                name: "Timeless Prestige",
+                price: 4500,
+                image: "/static/img/fragnances/per1.jpg",
+                category: "Fragrances"
+            },
+            {
+                name: "Enchanted Essence",
+                price: 3500,
+                image: "/static/img/fragnances/per3.jpg",
+                category: "Fragrances"
+            },
+            {
+                name: "Scented Secrets",
+                price: 3000,
+                image: "/static/img/fragnances/per19.jpg",
+                category: "Fragrances"
+            },
+            {
+                name: "Serene Temptation",
+                price: 2500,
+                image: "/static/img/fragnances/per22.jpg",
+                category: "Fragrances"
+            },
+            {
+                name: "Whispering Petals",
+                price: 7000,
+                image: "/static/img/fragnances/per6.jpg",
+                category: "Fragrances"
+            },
+            {
+                name: "Velvet Veil",
+                price: 6000,
+                image: "/static/img/fragnances/per7.jpg",
+                category: "Fragrances"
+            },
+            {
+                name: "Twilight Mist",
+                price: 5500,
+                image: "/static/img/fragnances/per8.jpg",
+                category: "Fragrances"
+            },
+            {
+                name: "Captivating Cascade",
+                price: 6000,
+                image: "/static/img/fragnances/per9.jpg",
+                category: "Fragrances"
+            },
+            {
+                name: "Celestial Blossom",
+                price: 4500,
+                image: "/static/img/fragnances/per10.jpg",
+                category: "Fragrances"
+            },
+            {
+                name: "Scented Dreams",
+                price: 6000,
+                image: "/static/img/fragnances/per11.jpg",
+                category: "Fragrances"
+            },
+            {
+                name: "Timeless Essence",
+                price: 7000,
+                image: "/static/img/fragnances/per12.jpg",
+                category: "Fragrances"
+            },
+            {
+                name: "Sublime Infusion",
+                price: 5000,
+                image: "/static/img/fragnances/per13.jpg",
+                category: "Fragrances"
+            },
+            {
+                name: "Charming Bouquet",
+                price: 7000,
+                image: "/static/img/fragnances/per14.jpg",
+                category: "Fragrances"
+            },
+            {
+                name: "Secret Gardenia",
+                price: 8000,
+                image: "/static/img/fragnances/per18.jpg",
+                category: "Fragrances"
+            },
+            {
+                name: "Enchanting Whisper",
+                price: 5000,
+                image: "/static/img/fragnances/per16.jpg",
+                category: "Fragrances"
+            },
+            {
+                name: "Short Dress",
+                price: 4500,
+                image: "/static/img/dresses/EC19.jpg",
+            },
+            {
+                name: "Anarkali Frock",
+                price: 3300,
+                image: "/static/img/dresses/EC2.jpg",
+            },
+            {
+                name: "Light Embroided",
+                price: 4400,
+                image: "/static/img/dresses/EC22.jpg",
+            },
+            {
+                name: "Casual Kurti",
+                price: 2800,
+                image: "/static/img/dresses/EC4.jpg",
+            },
+            {
+                name: "Cotton Kurti",
+                price: 3500,
+                image: "/static/img/dresses/EC5.jpg",
+            },
+            {
+                name: "Raw Silk Peplum with Dhaka Pajama",
+                price: 4400,
+                image: "/static/img/dresses/EC23.jpg",
+            },
+            {
+                name: "Printed Kurti",
+                price: 2700,
+                image: "/static/img/dresses/EC7.jpg",
+            },
+            {
+                name: "Classic Straight Cut Shalwar Kameez",
+                price: 4900,
+                image: "/static/img/dresses/EC25.jpg",
+            },
+            {
+                name: "Casual Khaddar Printed Suit",
+                price: 4700,
+                image: "/static/img/dresses/EC15.jpg",
+            },
+            {
+                name: "Chicken Suit with Embroidered",
+                price: 5000,
+                image: "/static/img/dresses/EC10.jpg",
+            },
+            {
+                name: "Light Simple Kurti",
+                price: 2500,
+                image: "/static/img/dresses/EC11.jpg",
+            },
+            {
+                name: "Formal Net Kurti with Trouser",
+                price: 5000,
+                image: "/static/img/dresses/EC12.jpg",
+            },
+            {
+                name: "Organza Dupatta Three-Piece Suit",
+                price: 3400,
+                image: "/static/img/dresses/EC13.jpg",
+            },
+            {
+                name: "Black Printed Kurti with Chiffon Dupatta",
+                price: 4500,
+                image: "/static/img/dresses/EC14.jpg",
+            },
+            {
+                name: "Traditional Kurta Pajama Set",
+                price: 6500,
+                image: "/static/img/dresses/EC1.jpg",
+            },
+            {
+                name: "Chikankari Embellished Kurti",
+                price: 4400,
+                image: "/static/img/dresses/EC16.jpg",
+            },
+            {
+                name: "Dior Necklace",
+                price: 4000,
+                image: "/static/img/jwellery/ECJ1.jpg",
+                altText: "Dior Necklace",
+            },
+            {
+                name: "5-Piece Jewellery Set",
+                price: 10000,
+                image: "/static/img/jwellery/ECJ2.jpg",
+                altText: "5-Piece Jewellery Set",
+            },
+            {
+                name: "Beige Simple Bracelet",
+                price: 1500,
+                image: "/static/img/jwellery/ECJ6.jpg"
+            },
+            {
+                name: "4-Piece Jewellery Set",
+                price: 12000,
+                image: "/static/img/jwellery/ECJ4.jpg",
+                altText: "4-Piece Jewellery Set",
+            },
+            {
+                name: "Simple Bracelet",
+                price: 1200,
+                image: "/static/img/jwellery/ECJ5.jpg",
+                altText: "Simple Bracelet",
+            },
+            {
+                name: "6-Piece Jewellery Set",
+                price: 3500,
+                image: "/static/img/jwellery/ECJ3.jpg",
+                altText: "6-Piece Jewellery Set",
+            },
+            {
+                name: "Pearls Stylish Bracelet",
+                price: 2000,
+                image: "/static/img/jwellery/ECJ7.jpg",
+                altText: "Pearls Stylish Bracelet",
+            },
+            {
+                name: "Crown Necklace With Earrings",
+                price: 17000,
+                image: "/static/img/jwellery/ECJ19.jpg",
+                altText: "Crown Necklace With Earrings",
+            },
+            {
+                name: "White Butterfly Stylish Bracelet",
+                price: 1800,
+                image: "/static/img/jwellery/ECJ9.jpg",
+                altText: "White Butterfly Stylish Bracelet",
+            },
+            {
+                name: "Rings Box",
+                price: 4000,
+                image: "/static/img/jwellery/ECJ10.jpg",
+                altText: "Rings Box",
+            },
+            {
+                name: "Layered Butterfly Bracelet",
+                price: 1400,
+                image: "/static/img/jwellery/ECJ11.jpg",
+                altText: "Layered Butterfly Bracelet",
+            },
+            {
+                name: "Globe Simple Locket",
+                price: 2000,
+                image: "/static/img/jwellery/ECJ12.jpg",
+                altText: "Globe Simple Locket",
+            },
+            {
+                name: "Simple Earrings",
+                price: 700,
+                image: "/static/img/jwellery/ECJ24.jpg",
+                altText: "Simple Earrings",
+            },
+            {
+                name: "Friends Locket",
+                price: 2500,
+                image: "/static/img/jwellery/ECJ14.jpg",
+                altText: "Friends Locket",
+            },
+            {
+                name: "Pearl Necklaces 3-pc Set",
+                price: 2200,
+                image: "/static/img/jwellery/ECJ15.jpg",
+                altText: "Pearl Necklaces 3-pc Set",
+            },
+            {
+                name: "Gold Jewellery Set",
+                price: 3500,
+                image: "/static/img/jwellery/ECJ25.jpg",
+                altText: "Gold Jewellery Set",
+            },
+            {
+                name: "Low Cut Rubber Sole Shoes",
+                price: 4500,
+                image: "/static/img/shoes/ECS19.jpg"
+            },
+            {
+                name: "Sneaker Boot Heals",
+                price: 8000,
+                image: "/static/img/shoes/ECS3.jpg"
+            },
+            {
+                name: "Arch Fit Shoes",
+                price: 7000,
+                image: "/static/img/shoes/ECS4.jpg"
+            },
+            {
+                name: "Chunky Sole Casual Sneakers",
+                price: 5000,
+                image: "/static/img/shoes/ECS5.jpg"
+            },
+            {
+                name: "Athletic Shoes",
+                price: 6500,
+                image: "/static/img/shoes/ECS6.jpg"
+            },
+            {
+                name: "Easy Walking Shoes",
+                price: 3500,
+                image: "/static/img/shoes/ECS7.jpg"
+            },
+            {
+                name: "Smooth Step Shoes",
+                price: 4000,
+                image: "/static/img/shoes/ECS8.jpg"
+            },
+            {
+                name: "Premium Lightweight Running Shoes",
+                price: 5500,
+                image: "/static/img/shoes/ECS9.jpg"
+            },
+            {
+                name: "Lace Up Comfy Shoes",
+                price: 5000,
+                image: "/static/img/shoes/ECS10.jpg"
+            },
+            {
+                name: "Non-Slip Low-Top Sneaker",
+                price: 5000,
+                image: "/static/img/shoes/ECS11.jpg"
+            },
+            {
+                name: "Comfortable And Stylish Shoes",
+                price: 8000,
+                image: "/static/img/shoes/ECS12.jpg"
+            },
+            {
+                name: "Stylish and Trendy Sneakers",
+                price: 6000,
+                image: "/static/img/shoes/ECS13.jpg"
+            },
+            {
+                name: "Gradient Color Lightweight Shoes",
+                price: 6000,
+                image: "/static/img/shoes/ECS14.jpg"
+            },
+            {
+                name: "Comfortable Footwear",
+                price: 3000,
+                image: "/static/img/shoes/ECS15.jpg"
+            },
+            {
+                name: "Fashionable Unisex Shoes",
+                price: 5000,
+                image: "/static/img/shoes/ECS16.jpg"
+            },
+            {
+                name: "Flat Casual Shoes",
+                price: 4000,
+                image: "/static/img/shoes/ECS17.jpg"
+            },
+            {
+                image: "/static/img/watches/wat5.jpg",
+                name: "Apple Smart Watch",
+                price: 7000,
+            },
+            {
+                image: "/static/img/watches/wat1.jpg",
+                name: "Numeric Animated Dial Watch",
+                price: 9000,
+            },
+            {
+                image: "/static/img/watches/wat2.jpg",
+                name: "Pearl Dragonfly Decorated Watch",
+                price: 7000,
+            },
+            {
+                image: "/static/img/watches/wat3.jpg",
+                name: "Fashion Brand Wrist Watch",
+                price: 8000,
+            },
+            {
+                image: "/static/img/watches/wat4.jpg",
+                name: "Custom Gradient Apple Watch",
+                price: 7000,
+            },
+            {
+                image: "/static/img/watches/wat15.jpg",
+                name: "Floral Pattern Watch",
+                price: 5000,
+            },
+            {
+                image: "/static/img/watches/wat6.jpg",
+                name: "Simple Strap Watch",
+                price: 4000,
+            },
+            {
+                image: "/static/img/watches/wat7.jpg",
+                name: "Apple Custom Bracelet Watch",
+                price: 6000,
+            },
+            {
+                image: "/static/img/watches/wat8.jpg",
+                name: "Stylish Golden Bracelet Watch",
+                price: 6000,
+            },
+            {
+                image: "/static/img/watches/wat9.jpg",
+                name: "Square Dial Watch",
+                price: 5000,
+            },
+            {
+                image: "/static/img/watches/wat10.jpg",
+                name: "Metropolitan Quartz Watch",
+                price: 7000,
+            },
+            {
+                image: "/static/img/watches/wat11.jpg",
+                name: "Fashion Brand Wrist Watch",
+                price: 5000,
+            },
+            {
+                image: "/static/img/watches/wat12.jpg",
+                name: "", // Name not provided
+                price: "", // Price not provided
+            },
+
+        ];
+
+        // Get the products container
+        const productsContainer = document.getElementById('product-list');
+
+        // Function to generate product cards dynamically
+        function displayProducts(filteredProducts) {
+    productsContainer.innerHTML = ''; // Clear previous results
+    if (filteredProducts.length > 0) {
+        filteredProducts.forEach(product => {
+            const productCard = `
+                <div class="group relative mb-4">
+                    <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-96"> <!-- Increased height here -->
+                        <img src="${product.image}" alt="${product.name}" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                    </div>
+                    <div class="mt-4 flex flex-col justify-between">
+                        <div>
+                            <h3 class="text-sm text-gray-800 font-bold">
+                                <a href="#">
+                                    <span aria-hidden="true" class="absolute inset-0"></span>
+                                    ${product.name}
+                                </a>
+                            </h3>
+                        </div>
+                        <p class="text-sm font-medium text-black">${product.price}</p>
+                    </div>
+                </div>
+            `;
+            productsContainer.innerHTML += productCard;
+        });
+    } else {
+        productsContainer.innerHTML = '<p class="text-center text-gray-600">No products found.</p>';
+    }
+}
+
+
+        // Mobile menu toggle
+        document.getElementById('menu-btn').addEventListener('click', function () {
+            const mobileMenu = document.getElementById('mobile-menu');
+            if (mobileMenu.classList.contains('hidden')) {
+                mobileMenu.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+        // Search functionality
+        document.getElementById('search-btn').addEventListener('click', function () {
+            const searchQuery = document.getElementById('search-input').value.toLowerCase();
+            const selectedCategory = document.getElementById('category-select').value;
+
+            // Filter products based on search query and category
+            const filteredProducts = products.filter(product => {
+                const matchesCategory = selectedCategory === '' || product.category === selectedCategory;
+                const matchesSearch = product.name.toLowerCase().includes(searchQuery);
+                return matchesCategory && matchesSearch;
+            });
+
+            // Display filtered products
+            displayProducts(filteredProducts);
+        });
+    </script>
+</body>
+
+</html>

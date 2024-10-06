@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories</title>
+     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body class="bg-white">
+    <nav class="bg-green-800 text-white p-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <!-- Logo and Brand Name -->
+            <a href="/" class="text-xl font-bold">
+                <i class="fa fa-fw fa-shopping-bag"></i> FashionDash.
+            </a>
+            
+            <!-- Menu Items (Hidden on Mobile) -->
+            <ul class="hidden md:flex space-x-6">
+                <li><a href="/#about" class="hover:text-green-200"><i class="fa fa-fw fa-info-circle"></i> About</a></li>
+                <li><a href="/#contact" class="hover:text-green-200"><i class="fa fa-fw fa-envelope"></i> Contact</a></li>
+                <li class="relative">
+                    <li><a href="/categories" class="hover:text-green-200"><i class="fa fa-fw fa-bars"></i>Categories</a></li>
+                <li><a href="/login" class="hover:text-green-200"><i class="fa fa-fw fa-user"></i> Login</a></li>
+                <li><a href="search.html" class="hover:text-green-200"><i class="fa fa-fw fa-search"></i> Search</a></li>
+                <li><a href="cart.html" class="hover:text-green-200"><i class="fa fa-fw fa-shopping-cart"></i> Cart</a></li>
+            </ul>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-xl hover:text-green-200" id="menu-btn">
+                <i class="fa fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden mt-4 bg-green-800 text-white p-4 space-y-4">
+            <a href="#about" class="block hover:text-green-200"><i class="fa fa-fw fa-info-circle"></i> About</a>
+            <a href="#contact" class="block hover:text-green-200"><i class="fa fa-fw fa-envelope"></i> Contact</a>
+            <a href="/login" class="block hover:text-green-200"><i class="fa fa-fw fa-user"></i> Login</a>
+            <a href="/search" class="block hover:text-green-200"><i class="fa fa-fw fa-search"></i> Search</a>
+            <a href="/cart" class="block hover:text-green-200"><i class="fa fa-fw fa-shopping-cart"></i> Cart</a>
+        </div>
+    </nav>
+    <div class="container mx-auto py-8 bg-white">
+        <h2 class="text-3xl font-bold text-center mb-8 text-green-800">Explore Our Categories</h2>
+    
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 p-5">
+            <div class="category-item border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow h-80">
+                <a href="/bag">
+                    <img class="w-full h-64 object-cover" src="/static/img/bag.jpg" alt="Bags">
+                    <div class="p-4 text-center">
+                        <h3 class="text-lg font-semibold">Bags</h3>
+                    </div>
+                </a>
+            </div>
+    
+            <div class="category-item border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow h-80">
+                <a href="/fragrances">
+                    <img class="w-full h-64 object-cover" src="/static/img/fragranance.jpg" alt="Fragrances">
+                    <div class="p-4 text-center">
+                        <h3 class="text-lg font-semibold">Fragrances</h3>
+                    </div>
+                </a>
+            </div>
+    
+            <div class="category-item border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow h-80">
+                <a href="/dress">
+                    <img class="w-full h-64 object-cover" src="/static/img/dresses/EC21.jpg" alt="Dresses">
+                    <div class="p-4 text-center">
+                        <h3 class="text-lg font-semibold">Dresses</h3>
+                    </div>
+                </a>
+            </div>
+    
+            <div class="category-item border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow h-80">
+                <a href="/jewelry">
+                    <img class="w-full h-64 object-cover" src="/static/img/jwellery.jpg" alt="Jewelry">
+                    <div class="p-4 text-center">
+                        <h3 class="text-lg font-semibold">Jewelry</h3>
+                    </div>
+                </a>
+            </div>
+    
+            <div class="category-item border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow h-80">
+                <a href="/watches">
+                    <img class="w-full h-64 object-cover" src="/static/img/watches/wat18.jpg" alt="Watches">
+                    <div class="p-4 text-center">
+                        <h3 class="text-lg font-semibold">Watches</h3>
+                    </div>
+                </a>
+            </div>
+    
+            <div class="category-item border rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-shadow h-80">
+                <a href="/shoes">
+                    <img class="w-full h-64 object-cover" src="/static/img/shoes.jpg" alt="Shoes">
+                    <div class="p-4 text-center">
+                        <h3 class="text-lg font-semibold">Shoes</h3>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    
+    
+    <footer class="bg-green-800 text-white py-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center flex-wrap">
+                <!-- Logo or Company name -->
+                <div class="text-xl font-bold">
+                    <a href="#" class="text-white hover:text-white">FashionDash.</a>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="flex space-x-6 mt-4 sm:mt-0">
+                    <a href="/#about" class="text-white hover:text-white">About</a>
+                    <a href="/#contact" class="text-white hover:text-white">Contact</a>
+                </div>
+
+                <!-- Social Media Links -->
+                <div class="flex space-x-6 mt-4 sm:mt-0">
+                    <a href="#" class="text-white hover:text-white">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M22.675 0h-21.35c-.73 0-1.325.596-1.325 1.325v21.351c0 .729.595 1.324 1.325 1.324h21.351c.73 0 1.324-.595 1.324-1.325v-21.351c0-.729-.594-1.325-1.324-1.325zm-13.186 19.733h-3.77v-9.486h3.77v9.486zm-1.885-10.804c-1.211 0-2.194-.986-2.194-2.195 0-1.211.983-2.196 2.194-2.196 1.21 0 2.194.985 2.194 2.196s-.984 2.195-2.194 2.195zm13.186 10.804h-3.77v-5.127c0-1.222-.024-2.797-1.705-2.797-1.707 0-1.968 1.334-1.968 2.71v5.214h-3.77v-9.486h3.617v1.296h.052c.504-.954 1.734-1.962 3.57-1.962 3.822 0 4.526 2.515 4.526 5.785v5.367z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-white hover:text-white">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M24 4.557c-.883.392-1.833.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.723-.951.564-2.005.974-3.127 1.194-.897-.955-2.178-1.555-3.594-1.555-2.72 0-4.924 2.203-4.924 4.924 0 .386.044.762.127 1.124-4.09-.205-7.719-2.164-10.148-5.144-.424.727-.667 1.572-.667 2.475 0 1.707.87 3.216 2.191 4.099-.807-.026-1.566-.247-2.228-.617v.062c0 2.385 1.694 4.374 3.946 4.827-.413.111-.848.171-1.296.171-.317 0-.626-.03-.928-.086.627 1.955 2.444 3.379 4.6 3.42-1.68 1.318-3.8 2.104-6.102 2.104-.396 0-.788-.023-1.175-.069 2.179 1.396 4.768 2.212 7.557 2.212 9.054 0 14.004-7.504 14.004-14.004 0-.213-.005-.426-.014-.637.961-.695 1.794-1.562 2.453-2.549z" />
+                        </svg>
+                    </a>
+                    <a href="#" class="text-white hover:text-white">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.992 4.388 10.954 10.125 11.854v-8.385h-3.047v-3.47h3.047v-2.64c0-3.008 1.79-4.665 4.533-4.665 1.313 0 2.686.235 2.686.235v2.957h-1.512c-1.491 0-1.952.926-1.952 1.877v2.236h3.328l-.532 3.47h-2.796v8.385c5.737-.9 10.125-5.861 10.125-11.854z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="mt-8 text-center text-white">
+                <p>&copy; 2024 FashionDash.. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Include JavaScript file -->
+    <script src="/static/script.js"></script>
+</body>
+</html> 
